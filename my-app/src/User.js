@@ -1,11 +1,19 @@
+import { useState } from "react";
+
 const User =(props) =>{
-    console.log(props);
+    const [message,setMessage] = useState(0);
+   
     return(
         
         <div>
-           Mohammed
+           {message}
+
+           <button onClick={() => setMessage(message+1)}>
+               Subscribe
+            </button>
 
         </div>
+        
         
     )
 }
