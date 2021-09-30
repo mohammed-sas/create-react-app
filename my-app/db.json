@@ -4,19 +4,13 @@
       "id": 2,
       "text": "shopping",
       "day": "oct 11th 5pm",
-      "reminder": true
+      "reminder": false
     },
     {
       "text": "test",
       "day": "test",
-      "reminder": true,
-      "id": 3
-    },
-    {
-      "text": "ok",
-      "day": "ok",
       "reminder": false,
-      "id": 4
+      "id": 3
     }
   ]
 }

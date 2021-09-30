@@ -1,10 +1,13 @@
 
 import './App.css';
-
+import {BrowserRouter as Router ,Route} from 'react-router-dom'
+ import About from './components/About';
+import Footer from './components/Footer'
 import Task from './components/Task';
 import Header from './components/Header';
 import {useState,useEffect} from 'react'
 import AddTask from './components/AddTask';
+
 function App() {
   const[showAddTask,setShowAddTask]=useState(false);
   const[tasks,setTasks] = useState([]);
@@ -70,16 +73,26 @@ function App() {
         setTasks(tasks.map((task) => task.id === id ? {...task,reminder:!task.reminder} : task))
     }
   return (
- 
-    <div className="App">
-        <Header show={showAddTask} onAdd={()=> setShowAddTask(!showAddTask)}/>
-        { showAddTask ? <AddTask  addTask={addTask}/> : ''}
-        <Task tasks={tasks} onDelete={deleteTask} onToggle = {toggleReminder}/>
+    <Router>
+      <div className="App">
+          <Header show={showAddTask} onAdd={()=> setShowAddTask(!showAddTask)}/>
          
-         
-         
-      
-    </div>
+          <Route
+            path='/'
+            exact
+            render={(props) => (
+              <>
+                 { showAddTask ? <AddTask  addTask={addTask}/> : ''}
+                  <Task tasks={tasks} onDelete={deleteTask} onToggle = {toggleReminder}/>
+          
+              </>
+            )}
+          />
+          <Route path="/about" component={About}/>
+          <Footer/>
+        
+      </div>
+    </Router>
   );
 }
 
